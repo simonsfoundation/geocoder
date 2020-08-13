@@ -2,8 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'geocoder/us/database'
 require 'json'
-require 'sinatra/json'
-
 
 
 @@db = Geocoder::US::Database.new(ENV["GEOCODER_DB"] || ARGV[0])
