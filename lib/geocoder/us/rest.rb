@@ -2,6 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require 'geocoder/us/database'
 require 'json'
+require 'sinatra/json'
+
+
 
 @@db = Geocoder::US::Database.new(ENV["GEOCODER_DB"] || ARGV[0])
 
@@ -29,6 +32,7 @@ get '/geocode.?:format?' do
     case params[:format]
     when /json/
       begin
+        headers 'Content-Type' => 'application/json'
         {
           :type => "FeatureCollection",
           :address => params[:q],
